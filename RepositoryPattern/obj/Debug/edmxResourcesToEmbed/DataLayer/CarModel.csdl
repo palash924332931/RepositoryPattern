@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CarDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="CompanyDetail">
+    <Key>
+      <PropertyRef Name="CompanyId" />
+    </Key>
+    <Property Name="CompanyId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CompanyName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="CompanyAddress" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="CompanyDetails1" Relationship="CarDBModel.FK_CompanyDetails_CompanyDetails" FromRole="CompanyDetail" ToRole="CompanyDetail1" />
+    <NavigationProperty Name="CompanyDetail1" Relationship="CarDBModel.FK_CompanyDetails_CompanyDetails" FromRole="CompanyDetail1" ToRole="CompanyDetail" />
+    <NavigationProperty Name="Customers" Relationship="CarDBModel.FK_Customer_CompanyDetails" FromRole="CompanyDetail" ToRole="Customer" />
+  </EntityType>
+  <EntityType Name="Customer">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="FatherName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CompanyId" Type="Int32" />
+    <Property Name="MobileNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="CompanyDetail" Relationship="CarDBModel.FK_Customer_CompanyDetails" FromRole="Customer" ToRole="CompanyDetail" />
+  </EntityType>
+  <EntityContainer Name="CarDBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="CompanyDetails" EntityType="Self.CompanyDetail" />
+    <EntitySet Name="Customers" EntityType="Self.Customer" />
+    <AssociationSet Name="FK_CompanyDetails_CompanyDetails" Association="CarDBModel.FK_CompanyDetails_CompanyDetails">
+      <End Role="CompanyDetail" EntitySet="CompanyDetails" />
+      <End Role="CompanyDetail1" EntitySet="CompanyDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Customer_CompanyDetails" Association="CarDBModel.FK_Customer_CompanyDetails">
+      <End Role="CompanyDetail" EntitySet="CompanyDetails" />
+      <End Role="Customer" EntitySet="Customers" />
+    </AssociationSet>
+  </EntityContainer>
+  <Association Name="FK_CompanyDetails_CompanyDetails">
+    <End Type="CarDBModel.CompanyDetail" Role="CompanyDetail" Multiplicity="1" />
+    <End Type="CarDBModel.CompanyDetail" Role="CompanyDetail1" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="CompanyDetail">
+        <PropertyRef Name="CompanyId" />
+      </Principal>
+      <Dependent Role="CompanyDetail1">
+        <PropertyRef Name="CompanyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Customer_CompanyDetails">
+    <End Type="CarDBModel.CompanyDetail" Role="CompanyDetail" Multiplicity="0..1" />
+    <End Type="CarDBModel.Customer" Role="Customer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CompanyDetail">
+        <PropertyRef Name="CompanyId" />
+      </Principal>
+      <Dependent Role="Customer">
+        <PropertyRef Name="CompanyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

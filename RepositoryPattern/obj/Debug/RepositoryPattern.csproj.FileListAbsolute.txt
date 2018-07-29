@@ -1,0 +1,10 @@
+C:\Users\sp\OneDrive\Current Project\RepositoryPattern\RepositoryPattern\bin\Debug\RepositoryPattern.exe.config
+C:\Users\sp\OneDrive\Current Project\RepositoryPattern\RepositoryPattern\bin\Debug\RepositoryPattern.exe
+C:\Users\sp\OneDrive\Current Project\RepositoryPattern\RepositoryPattern\bin\Debug\RepositoryPattern.pdb
+C:\Users\sp\OneDrive\Current Project\RepositoryPattern\RepositoryPattern\bin\Debug\EntityFramework.dll
+C:\Users\sp\OneDrive\Current Project\RepositoryPattern\RepositoryPattern\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\sp\OneDrive\Current Project\RepositoryPattern\RepositoryPattern\bin\Debug\EntityFramework.xml
+C:\Users\sp\OneDrive\Current Project\RepositoryPattern\RepositoryPattern\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\sp\OneDrive\Current Project\RepositoryPattern\RepositoryPattern\obj\Debug\RepositoryPattern.csprojResolveAssemblyReference.cache
+C:\Users\sp\OneDrive\Current Project\RepositoryPattern\RepositoryPattern\obj\Debug\RepositoryPattern.exe
+C:\Users\sp\OneDrive\Current Project\RepositoryPattern\RepositoryPattern\obj\Debug\RepositoryPattern.pdb
